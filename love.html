@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Love ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #0d0d0d;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      text-align: center;
+    }
+
+    /* Twinkling stars */
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.2; }
+      to { opacity: 1; }
+    }
+
+    /* Floating emojis */
+    .emoji {
+      position: absolute;
+      font-size: 1.5rem;
+      animation: floatUp 8s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0.8); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 90%;
+      padding: 20px;
+    }
+
+    input {
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      text-align: center;
+      width: 80%;
+      outline: none;
+    }
+
+    button {
+      margin-top: 12px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #e91e63;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .message {
+      display: none;
+      font-size: 1.3rem;
+      line-height: 1.6;
+      margin-top: 20px;
+    }
+
+    .love-heading {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #ff4d6d;
+      text-shadow: 0 0 15px #ff4d6d;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Stars background -->
+  <script>
+    for (let i = 0; i < 100; i++) {
+      let star = document.createElement("div");
+      star.className = "star";
+      star.style.top = Math.random() * window.innerHeight + "px";
+      star.style.left = Math.random() * window.innerWidth + "px";
+      star.style.animationDuration = (Math.random() * 2 + 1) + "s";
+      document.body.appendChild(star);
+    }
+
+    const emojis = ["❤️","✨","🌹","💫","💕","🌟"];
+    for (let i = 0; i < 20; i++) {
+      let emoji = document.createElement("div");
+      emoji.className = "emoji";
+      emoji.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      emoji.style.left = Math.random() * 100 + "vw";
+      emoji.style.animationDuration = (5 + Math.random() * 5) + "s";
+      emoji.style.fontSize = (1 + Math.random() * 2) + "rem";
+      document.body.appendChild(emoji);
+    }
+  </script>
+
+  <div class="container">
+    <div id="nameInput">
+      <h2>💌 Enter your name, my love:</h2>
+      <input type="text" id="loverName" placeholder="Type your name...">
+      <br>
+      <button onclick="showMessage()">Unlock Love ❤️</button>
+    </div>
+
+    <div class="message" id="loveMessage">
+      <h2 class="love-heading" id="loveHeading"></h2>
+      <p id="personalMessage"></p>
+    </div>
+  </div>
+
+  <script>
+    function showMessage() {
+      const name = document.getElementById("loverName").value.trim().toLowerCase();
+      if (name === "mary") {
+        document.getElementById("nameInput").style.display = "none";
+        document.getElementById("loveMessage").style.display = "block";
+        document.getElementById("loveHeading").innerText = "My Forever Love ❤️";
+        document.getElementById("personalMessage").innerHTML = `
+          Hey beautiful 🌹, from the very first moment I knew you,<br>
+          my world started shining brighter ✨.  <br>
+          You’re not just my girlfriend… you’re my safe place, <br> you're my smile,  
+          and my forever vibe ❤️💫💕.  
+        `;
+      } else {
+        alert("Access Denied 🚫… This love is already reserved 💕");
+      }
+    }
+  </script>
+
+</body>
+</html>
